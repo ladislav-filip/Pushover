@@ -1,0 +1,10 @@
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+PushoverConsole/HttpClient/http-client.env.json
+
+PushoverConsole/appsettings.local.json
+
+PushoverAltair/appsettings.local.json

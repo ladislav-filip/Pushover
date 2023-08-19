@@ -1,0 +1,109 @@
+﻿###
+# Odeslání jednoduché zprávy na všechna zařízení
+POST {{url}}/messages.json
+Content-Type: application/json
+
+{
+  "token" : "{{token}}",
+  "user" : "{{user}}",
+  "message" : "Simple messsage"
+}
+
+<> 2023-08-19T094530.400.json
+<> 2023-08-19T093652.200.json
+
+###
+# Odeslání zprávy na skupinu "Dev", ta je reprezentována UUID v parametru "user"
+POST {{url}}/messages.json
+Content-Type: application/json
+
+{
+  "token" : "{{token}}",
+  "user" : "{{groupDev}}",
+  "html": 1,
+  "sound": "gamelan",
+  "title" : "To Group Dev",
+  "message" : "Zpráva poslána z <b>HTTP klienta</b> Rider."
+}
+
+###
+# Odeslání zprávy na skupinu "Fake", ta je reprezentována UUID v parametru "user"
+POST {{url}}/messages.json
+Content-Type: application/json
+
+{
+  "token" : "{{token}}",
+  "user" : "{{groupFake}}",
+  "html": 1,
+  "sound": "bike",
+  "title" : "To Group Fake",
+  "message" : "Zpráva poslána z <b>HTTP klienta</b> Rider."
+}
+
+###
+# Odeslání zprávy na zařízení "Chrome-Home"
+POST {{url}}/messages.json
+Content-Type: application/json
+
+{
+  "token" : "{{token}}",
+  "user" : "{{user}}",
+  "device": "Chrome-Home",
+  "title" : "Pilif message",
+  "message" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, eget aliquam nisl nisl nec nisl. Sed euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, eget aliquam nisl nisl nec nisl. Sed euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, eget aliquam nisl nisl nec nisl. Sed euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, eget aliquam nisl nisl nec nisl. Sed euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, eget aliquam nisl nisl nec nisl. Sed euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, eget aliquam nisl nisl nec nisl. Sed euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, eget aliquam nisl nisl nec nisl. Sed euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, eget aliquam nisl nisl nec nisl."
+}
+
+###
+# Odeslání zprávy na zařízení "Chrome-Home" s HTML formátováním
+POST {{url}}/messages.json
+Content-Type: application/json
+
+{
+  "token" : "{{token}}",
+  "user" : "{{user}}",
+  "device": "Realme",
+  "html": 1,
+  "title" : "Pilif HTML message",
+  "message" : "Lorem <b>ipsum dolor</b> sit amet, consectetur adipiscing elit. Nullam euismod, <font color='#0000ff'>nisl eget aliquam ultricies,</font> nunc nisl aliquet nunc."
+}
+
+###
+# Odeslání zprávy na zařízení "Chrome-Home" s HTML formátováním a odkazem
+POST {{url}}/messages.json
+Content-Type: application/json
+
+{
+  "token" : "{{token}}",
+  "user" : "{{user}}",
+  "device": "Realme",
+  "html": 1,
+  "url": "https://www.seznam.cz",
+  "title" : "Pilif HTML message",
+  "message" : "Lorem <b>ipsum dolor</b> sit amet, consectetur adipiscing elit. Nullam euismod, <font color='#0000ff'>nisl eget aliquam ultricies,</font> nunc nisl aliquet nunc."
+}
+
+###
+# Odeslání zprávy na zařízení "Chrome-Home" s HTML formátováním
+POST {{url}}/messages.json
+Content-Type: application/json
+
+{
+  "token" : "{{token}}",
+  "user" : "{{user}}",
+  "device": "Chrome-Home",
+  "html": 1,
+  "sound": "bike",
+  "title" : "Pilif HTML message",
+  "message" : "Lorem <b>ipsum dolor</b> sit amet, consectetur adipiscing elit. Nullam euismod, <font color='#0000ff'>nisl eget aliquam ultricies,</font> nunc nisl aliquet nunc."
+}
+
+###
+# Výpis všech zařízení ve skupině "Dev"
+GET {{url}}/groups/{{group}}.json?token={{token}}
+Accept: application/json
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
